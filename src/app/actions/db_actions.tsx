@@ -3,11 +3,17 @@ import { MongoClient, ServerApiVersion } from 'mongodb'
 import { revalidatePath } from 'next/cache'
 
 // Local function
-function createClient() {
-    const uri = process.env.MONGO_URI || undefined
+async function createClient() {
+    const uri = process.env.MONGO_URI || ""
 
-    if(uri!==undefined) {
-    const client = new MongoClient(uri);
+    if(uri!="") {
+    const client = new MongoClient(uri, {
+        serverApi: {
+          version: ServerApiVersion.v1,
+          strict: true,
+          deprecationErrors: true,
+        }
+      });
 
     return client
     }
@@ -18,7 +24,7 @@ function createClient() {
 
 export async function addReaderToWaitingList(_email:string) {
     
-        const client = createClient()
+        const client = await createClient()
 
         if(client){
             await client.connect()
@@ -32,7 +38,6 @@ export async function addReaderToWaitingList(_email:string) {
             console.log("Added to waiting list")
             await client.close();
         }    
-        revalidatePath("/")
 }
 
 export async function addAuthorToWaitingList(_email:string) {
@@ -50,7 +55,6 @@ export async function addAuthorToWaitingList(_email:string) {
         console.log("Added to waiting list")
         await client.close();
     }     
-    revalidatePath("/")
 }
 
 export async function getBooks() {
