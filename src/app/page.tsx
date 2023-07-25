@@ -8,8 +8,8 @@ import { addReaderToWaitingList } from "./actions/db_actions"
 
 export default async function Home() {
     return (
-    <div className='flex space-x-10 mx-20 mt-20 flex-wrap'>
-        <div className='self-center md:w-[50%] mr-10 text-center md:text-left my-5'>
+    <div className='flex space-x-10 md:mx-20 mt-20 flex-wrap'>
+        <div className='self-center md:w-[50%] md:mr-10 mx-5 md:mx-0 text-center md:text-left my-5'>
             <p className="text-6xl bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono">Welcome to BookLab</p>
             <p className="text-xl font-bold italic bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono mt-5">The first collaborative book reading platform</p>
             <p className="text-xl bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono mt-5">The problem?</p>
