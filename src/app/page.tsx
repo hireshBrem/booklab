@@ -4,6 +4,7 @@ import writingPic from "@/app/pics/pic2.png"
 import feedbackPic from '@/app/pics/pic3.png'
 import GetStarted from "@/app/components/GetStarted"
 import AuthorSignUp from "./components/AuthorSignUp"
+import { addReaderToWaitingList } from "./actions/db_actions"
 
 export default async function Home() {
     return (
