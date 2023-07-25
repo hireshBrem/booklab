@@ -23,6 +23,41 @@ async function createClient() {
     }
 }
 
+export async function addReaderToWaitingList(_email:string) {
+        
+        const client = await createClient()
+        
+        if(client){
+            await client.connect()
+    
+            const db = client.db("bookdb")
+    
+            await db.collection("early_adopters")
+            .insertOne({
+                email: _email,
+            });
+    
+            await client.close();
+        }    
+}
+
+export async function addAuthorToWaitingList(_email:string) {
+    const client = await createClient()
+        
+    if(client){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        await db.collection("early_authors")
+        .insertOne({
+            email: _email,
+        });
+
+        await client.close();
+    }     
+}
+
 export async function getBooks() {
 
     const client = await createClient()

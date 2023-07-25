@@ -1,7 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Martian_Mono } from 'next/font/google'
-import { ClerkProvider } from '@clerk/nextjs'
+import MainNavbar from './components/MainNavbar'
+import AuthProvider from './components/AuthProvider'
+import Footer from './components/Footer'
 
 const inter = Inter({ 
     subsets: ['latin'],
@@ -25,12 +27,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
     <html lang="en">
         <body className={`${inter.variable} ${martianMono.variable} bg-gray-900`}>
-            {children}
+            <AuthProvider>
+                {/* <MainNavbar /> */}
+                {children}
+                {/* <Footer /> */}
+            </AuthProvider>
         </body>
     </html>
-    </ClerkProvider>
   )
 }

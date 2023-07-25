@@ -13,7 +13,8 @@ export default function RootLayout({
 }) {
   return (
     <div>
-        <Navbar />
+        {/* <Navbar /> */}
+        <div className='h-20'></div>
         {children}
     </div>
   )

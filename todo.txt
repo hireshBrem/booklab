@@ -1,0 +1,6 @@
+# TODOs
+https://chat.openai.com/share/76448a63-681d-4c71-ab3b-64f3931dcc69
+
+- make pdf annotations work (important!) => basic highlight and comment on pdf
+- production task: move clerk to production side when deploying (currently in dev mode)
+- add pricing for users => 3 tiers => free tier => basic tier ($20/month) => premium tier ($50/month)

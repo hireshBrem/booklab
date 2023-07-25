@@ -13,6 +13,8 @@ export default function RootLayout({
 }) {
   return (
     <div>
+         <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+
         {children}
     </div>
   )

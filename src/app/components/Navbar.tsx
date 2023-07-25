@@ -1,5 +1,5 @@
 'use client';
-import { UserButton } from "@clerk/nextjs";
+
 import Link from "next/link";
 import { useState } from "react";
 import { useTransition } from "react";
@@ -32,9 +32,6 @@ export default function Navbar() {
     
     return(
     <>
-    <div className="flex justify-center text-white border-b-2 border-indigo-400">
-        <h1 className="bg-gradient-to-tr my-2 w-fit text-sm px-2 from-indigo-500 to-[#BA68C8] rounded-lg">BookLab Beta</h1>
-    </div>
     <div className="flex font-martian_mono flex-wrap justify-center sm:justify-between p-3">       
         <div className="self-center">          
             {/* <div className="flex space-x-2">
@@ -81,35 +78,35 @@ export default function Navbar() {
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4 ">                
             <form>
                 <div className="flex relative">
-                    <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
+                    {/* <label htmlFor="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                     <button id="dropdown-button" className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button" onClick={()=>{setButtonOpen(!buttonOpen)}}>All categories <svg className="w-2.5 h-2.5 ml-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
                         </svg>
-                    </button>
+                    </button> */}
                     {
-                    buttonOpen === true ?
-                    <div className="z-10 mt-10 absolute bg-white divide-gray-100 rounded-lg shadow w-44 ">
-                        <ul className="py-2 text-sm text-gray-700">
-                        <Link href="/books">
-                            <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">General</button>
-                        </Link>
-                        <Link href="/books/science">
-                            <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Science</button>
-                        </Link>
-                        <Link href="/books/technology">
-                            <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Technology</button>
-                        </Link>
-                        <Link href="/books/finance">
-                            <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Finance</button>
-                        </Link>
-                        <Link href="/books/biography">
-                            <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Biography</button>
-                        </Link>
-                        </ul>
-                    </div>
-                    :null
+                    // buttonOpen === true ?
+                    // <div className="z-10 mt-10 absolute bg-white divide-gray-100 rounded-lg shadow w-44 ">
+                    //     <ul className="py-2 text-sm text-gray-700">
+                    //     <Link href="/books">
+                    //         <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">General</button>
+                    //     </Link>
+                    //     <Link href="/books/science">
+                    //         <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Science</button>
+                    //     </Link>
+                    //     <Link href="/books/technology">
+                    //         <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Technology</button>
+                    //     </Link>
+                    //     <Link href="/books/finance">
+                    //         <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Finance</button>
+                    //     </Link>
+                    //     <Link href="/books/biography">
+                    //         <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Biography</button>
+                    //     </Link>
+                    //     </ul>
+                    // </div>
+                    // :null
                     }
-                    <div className="relative w-full">
+                    {/* <div className="relative w-full">
                         <input type="search" id="search-dropdown" className="sm:block hidden p-2.5 w-full z-20 text-sm text-gray-900 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Books" required />
                         <button type="submit" className="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -117,12 +114,9 @@ export default function Navbar() {
                             </svg>
                             <span className="sr-only">Search</span>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </form>
-        </div>
-        <div className="self-center sm:ml-auto mt-3 sm:mt-0">
-            <UserButton />
         </div>
     </div>
     </>
