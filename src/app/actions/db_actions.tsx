@@ -3,7 +3,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb'
 import { revalidatePath } from 'next/cache'
 
 // Local function
-async function createClient() {
+export async function createClient() {
     const uri = process.env.MONGO_URI || ""
 
     if(uri!="") {
