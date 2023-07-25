@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { addReaderToWaitingList } from '@/actions/db_actions'
+import { addReaderToWaitingList } from '@/app/actions/db_actions'
 import { useState } from 'react'
 import { useTransition } from 'react'
 

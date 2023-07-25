@@ -1,7 +1,7 @@
 
 import ProductCard from "../components/ProductCard";
 import Link from "next/link";
-import { getBooks } from "@/actions/db_actions";
+import { getBooks } from "@/app/actions/db_actions";
 import { getServerSession } from "next-auth";
 
 export default async function Books() {

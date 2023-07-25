@@ -1,6 +1,6 @@
 'use client'
 import { useTransition, useState } from "react"
-import { addAuthorToWaitingList } from "@/actions/db_actions"
+import { addAuthorToWaitingList } from "@/app/actions/db_actions"
 import Link from "next/link"
 
 export default function AuthorSignUp() {

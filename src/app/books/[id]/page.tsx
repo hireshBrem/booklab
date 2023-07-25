@@ -1,4 +1,4 @@
-import { getPDF } from "@/actions/db_actions"
+import { getPDF } from "@/app/actions/db_actions"
 import { PDFDocument } from "pdf-lib"
 
 export async function generateMetadata({ params }: {params:{title:string}}) {

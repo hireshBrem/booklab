@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTransition } from "react";
-import { uploadBook } from "@/actions/db_actions";
+import { uploadBook } from "@/app/actions/db_actions";
 
 export default function Navbar() {
     let [isPending, startTransition] = useTransition()
