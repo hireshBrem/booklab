@@ -4,6 +4,7 @@ import { Inter, Martian_Mono } from 'next/font/google'
 import MainNavbar from './components/MainNavbar'
 import AuthProvider from './components/AuthProvider'
 import Footer from './components/Footer'
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ 
     subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
             <AuthProvider>
                 {/* <MainNavbar /> */}
                 {children}
+                <Analytics />
                 {/* <Footer /> */}
             </AuthProvider>
         </body>
