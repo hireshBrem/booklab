@@ -3,7 +3,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb'
 import { revalidatePath } from 'next/cache'
 
 // Local function
-async function createClient() {
+function createClient() {
     const uri = process.env.MONGO_URI || undefined
 
     if(uri!==undefined) {
@@ -17,9 +17,9 @@ async function createClient() {
 }
 
 export async function addReaderToWaitingList(_email:string) {
-        
-        const client = await createClient()
-        
+    
+        const client = createClient()
+
         if(client){
             await client.connect()
     
