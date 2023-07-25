@@ -15,17 +15,17 @@ export default async function Page({params, searchParams}: {
 
     let book:any = await getPDF(searchParams.book_id)
 
-    document.addEventListener("adobe_dc_view_sdk.ready", function(){
-        var adobeDCView = new AdobeDC.View({clientId: "abd1af088d86476fb223867c75c8fa02", divId: "adobe-dc-view"});
-        adobeDCView.previewFile({
-        content:{ location:
-            { url: "https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"}},
-        metaData:{fileName: "Bodea Brochure.pdf"}
-        },
-        {
-        embedMode: "SIZED_CONTAINER"
-        });
-    });
+    // document.addEventListener("adobe_dc_view_sdk.ready", function(){
+    //     var adobeDCView = new AdobeDC.View({clientId: "abd1af088d86476fb223867c75c8fa02", divId: "adobe-dc-view"});
+    //     adobeDCView.previewFile({
+    //     content:{ location:
+    //         { url: "https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"}},
+    //     metaData:{fileName: "Bodea Brochure.pdf"}
+    //     },
+    //     {
+    //     embedMode: "SIZED_CONTAINER"
+    //     });
+    // });
     // book = await JSON.parse(book)
     // console.log(book)
     // const pdfDoc = await PDFDocument.load(book)
