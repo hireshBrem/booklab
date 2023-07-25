@@ -1,7 +1,6 @@
 'use server';
 import { MongoClient, ServerApiVersion } from 'mongodb'
 import { revalidatePath } from 'next/cache'
-import { PDFDocument } from "pdf-lib"
 
 // Local function
 async function createClient() {
@@ -36,9 +35,10 @@ export async function addReaderToWaitingList(_email:string) {
             .insertOne({
                 email: _email,
             });
-    
+            console.log("Added to waiting list")
             await client.close();
         }    
+        revalidatePath("/")
 }
 
 export async function addAuthorToWaitingList(_email:string) {
@@ -53,9 +53,10 @@ export async function addAuthorToWaitingList(_email:string) {
         .insertOne({
             email: _email,
         });
-
+        console.log("Added to waiting list")
         await client.close();
     }     
+    revalidatePath("/")
 }
 
 export async function getBooks() {
