@@ -7,13 +7,7 @@ async function createClient() {
     const uri = process.env.MONGO_URI || undefined
 
     if(uri!==undefined) {
-    const client = new MongoClient(uri, {
-        serverApi: {
-          version: ServerApiVersion.v1,
-          strict: true,
-          deprecationErrors: true,
-        }
-      });
+    const client = new MongoClient(uri);
 
     return client
     }
