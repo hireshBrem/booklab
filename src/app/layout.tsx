@@ -31,10 +31,10 @@ export default function RootLayout({
     <html lang="en">
         <body className={`${inter.variable} ${martianMono.variable} bg-gray-900`}>
             <AuthProvider>
-                {/* <MainNavbar /> */}
+                <MainNavbar />
                 {children}
                 <Analytics />
-                {/* <Footer /> */}
+                <Footer />
             </AuthProvider>
         </body>
     </html>

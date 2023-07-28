@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
+import { addUserToDB } from "@/app/actions/db_actions"
 
 const handler = NextAuth({
     providers: [
@@ -13,8 +14,15 @@ const handler = NextAuth({
             response_type: "code"
             }
         }
-        })
+        }),
     ],
+    callbacks: {
+        async signIn({ user, account, profile, email, credentials }) {
+            console.log("Sign in")
+            await addUserToDB(user.email, user.name)
+            return(true)
+        }
+    }
 })
 
 export { handler as GET, handler as POST }

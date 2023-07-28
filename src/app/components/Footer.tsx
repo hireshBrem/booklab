@@ -17,7 +17,10 @@ export default function Footer() {
                     <a href="/authors" className="mr-4 hover:underline md:mr-6 ">Publish Writing</a>
                 </li>
                 <li>
-                    <a href="#" className="hover:underline">Contact</a>
+                    <a href="/terms&conditions" className="mr-4 hover:underline md:mr-6 ">Terms and conditions</a>
+                </li>
+                <li>
+                    <a href="/" className="hover:underline">Contact</a>
                 </li>
             </ul>
         </div>

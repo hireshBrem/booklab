@@ -1,5 +1,5 @@
 'use server';
-import { MongoClient, ServerApiVersion } from 'mongodb'
+import { MongoClient, ObjectId, ServerApiVersion } from 'mongodb'
 import { revalidatePath } from 'next/cache'
 
 // Local function
@@ -23,20 +23,20 @@ export async function createClient() {
 
 export async function addReaderToWaitingList(_email:string) {
     
-        const client = await createClient()
+    const client = await createClient()
 
-        if(client){
-            await client.connect()
-    
-            const db = client.db("bookdb")
-    
-            await db.collection("early_adopters")
-            .insertOne({
-                email: _email,
-            });
-            console.log("Added to waiting list")
-            await client.close();
-        }    
+    if(client){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        await db.collection("early_adopters")
+        .insertOne({
+            email: _email,
+        });
+        console.log("Added to waiting list")
+        await client.close();
+    }    
 }
 
 export async function addAuthorToWaitingList(_email:string) {
@@ -69,38 +69,29 @@ export async function getBooks() {
 
         await client.close();
 
-        revalidatePath("/books")
+        // revalidatePath("/books")
 
         return(books) 
     }
 }
 
-export async function getPDF(id:string | undefined) {
+export async function getPDF(id:string) {
     
     const client = await createClient()
-    let book:any = null
     
-    if(client && id!==undefined){
+    if(client){
         await client.connect()
 
         const db = client.db("bookdb");
-        
-        const books = await db.collection("books")
-        .find({}).toArray().then((_books) => 
-        {
-            return(
-            _books.forEach(_book => {
-                if(JSON.stringify(_book._id) === id) {
-                    book = _book
-                    return(book)
-                }    
-            })
-            )
+
+        const book = await db.collection("books")
+        .findOne({
+            _id: new ObjectId(id)
         })
-
+        
         await client.close();
-
-        return(book.data) 
+        revalidatePath("/books/[id]")
+        return(book) 
     }
 }
 
@@ -122,4 +113,114 @@ export async function uploadBook(title:string, book:string) {
         await client.close();
     }
 
+}
+
+export async function addComment(_comment:string, page:number, _name:string | null | undefined, _title:string) {
+    const client = await createClient()
+    let _date = new Date().toUTCString()
+
+    if(client && _name!==null && _name!==undefined){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        let query = { title: _title }
+
+        console.log(
+            _comment, page, _name, _title, _date
+        )
+        let i = page-1
+        i.toString()
+
+        await db.collection("books")
+        .updateOne(query,
+        {
+            $push: {
+                ['comments.' + i]: {
+                    $each: [{
+                        "comment_text": _comment, 
+                        "date": _date, 
+                        "sender_name": _name
+                    }],
+                }
+            }
+        }            
+        )
+        revalidatePath("/books/[id]")
+        await client.close();
+    }
+
+}
+
+export async function checkAllowedBook(email: string | null | undefined) {
+    const client = await createClient()
+
+    if(client){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        const user = await db.collection("users")
+        .findOne({
+            email: email
+        })
+
+        await client.close();
+
+        if(user && user.booksLeft!=0) {
+            return(true)
+        }
+        else {
+            return(false)
+        }
+    }
+
+}
+
+export async function checkUserInDB(_email: string | null | undefined) {
+    const client = await createClient()
+
+    if(client){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        const user = await db.collection("users")
+        .findOne({
+            email: _email
+        })
+
+        await client.close();
+
+        if(user) {
+            return(true)
+        }
+        else {
+            return(false)
+        }
+    }
+
+
+}
+
+export async function addUserToDB(_email:string | null | undefined, _name:string | null | undefined) {
+    const client = await createClient()
+    let userIndb = await checkUserInDB(_email)
+    
+    if(client && userIndb===false){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        await db.collection("users")
+        .insertOne({
+            name: _name,
+            email: _email,
+            plan: "free",
+            signedUp: new Date().toUTCString(),
+            booksLeft: 0,
+            ownedBooks: null
+        })
+        client.close()
+    }
 }

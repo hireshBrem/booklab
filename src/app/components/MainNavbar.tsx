@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from "react"
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession } from "next-auth/react"
 
 export default function MainNavbar() {
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
 
     const[dropdownNavbar, setDropdownNavbar] = useState(false)
     const[burgerMenu, setBurgerMenu] = useState(false)
@@ -47,12 +47,9 @@ export default function MainNavbar() {
                 dropdownNavbar === true ?
                 <div id="dropdownNavbar" className="z-10 mt-5 absolute font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <ul className="text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                    <li>
+                    {/* <li>
                         <a href="/mybooks" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Books</a>
-                    </li>
-                    <li>
-                        <a href="/myplan" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Plan</a>
-                    </li>
+                    </li> */}
                     </ul>
                     <div className="py-1">
                         <a href="/api/auth/signout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Sign out</a>
