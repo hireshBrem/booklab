@@ -4,6 +4,9 @@
 
 // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 import { NextResponse, NextRequest } from 'next/server'
+import { getServerSession } from 'next-auth';
+import { createClient } from '@/app/actions/db_actions';
+
 import Cors from 'cors';
 import Stripe from 'stripe';
 
@@ -18,14 +21,13 @@ export async function POST(request: NextRequest) {
     let body = await request.text()
     let data;
     let eventType:any;
+    let event;
 
-    // Check if webhook signing is configured.
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     if (webhookSecret) {
         console.log("webhookSecret")
-      // Retrieve the event by verifying the signature using the raw body and secret.
-      let event;
+
       let signature = request.headers.get("stripe-signature") as string
 
       try {
@@ -38,7 +40,7 @@ export async function POST(request: NextRequest) {
         data = event.data;
         eventType = event.type;
         console.log("event: ", eventType)
-        // return NextResponse.json({received: true})
+        
     } catch (err) {
         console.log(`⚠️  Webhook signature verification failed.`);
         return NextResponse.json({errorCode: 400})
@@ -48,10 +50,36 @@ export async function POST(request: NextRequest) {
     switch (eventType) {
         case 'checkout.session.completed':
             console.log("checkout.session.completed")
+            
+            // You should provision the subscription and save the customer ID to your database.
+
+            const session = await getServerSession()
+
+            const client = await createClient()
+
+            if(client && session && event){
+                await client.connect()
+        
+                const db = client.db("bookdb")
+                
+                let plan:any = event.data.object
+                console.log(plan)
+
+                if(plan == ""){
+
+                }
+
+                // await db.collection("users")
+                // .updateOne({email: session.user?.email}, 
+                // {$set:{ booksLeft:}})
+
+                console.log("Added to waiting list")
+                await client.close();
+            }    
+
             return NextResponse.json({msg: "checkout.session.completed"})
 
             // Payment is successful and the subscription is created.
-            // You should provision the subscription and save the customer ID to your database.
           break;
         case 'invoice.paid':
 
