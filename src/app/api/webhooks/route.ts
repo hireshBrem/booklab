@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     if (webhookSecret) {
+        console.log("webhookSecret")
       // Retrieve the event by verifying the signature using the raw body and secret.
       let event;
       let signature = request.headers.get("stripe-signature") as string
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
         );
         data = event.data;
         eventType = event.type;
+        console.log("event: ", eventType)
         // return NextResponse.json({received: true})
         return NextResponse.json({received: true})
 
