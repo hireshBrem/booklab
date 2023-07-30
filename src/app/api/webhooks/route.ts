@@ -5,8 +5,9 @@
 // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 import { NextResponse, NextRequest } from 'next/server'
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { createClient } from '@/app/actions/db_actions';
+
 
 import Cors from 'cors';
 import Stripe from 'stripe';
@@ -57,7 +58,7 @@ export async function POST(request: NextRequest) {
             }
 
             // You should provision the subscription and save the customer ID to your database.
-
+            console.log("auth options: " + authOptions)
             const session = await getServerSession(authOptions)
             console.log("session: ", session)
 
@@ -77,6 +78,7 @@ export async function POST(request: NextRequest) {
                 console.log("amount: ", amount)
                 console.log("customer_id: ", customer_id)
 
+                //add the customer id to mongodb
                 await db.collection("users")
                 .updateOne({email: session.user?.email},
                     {$set:{ customer_id: customer_id}})
