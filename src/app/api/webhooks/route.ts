@@ -39,21 +39,12 @@ export async function POST(request: NextRequest) {
         eventType = event.type;
         console.log("event: ", eventType)
         // return NextResponse.json({received: true})
-        return NextResponse.json({received: true})
-
     } catch (err) {
         console.log(`⚠️  Webhook signature verification failed.`);
         return NextResponse.json({errorCode: 400})
       }
-    }else{
-
-      // Webhook signing is recommended, but if the secret is not configured in `config.js`,
-      // retrieve the event data directly from the request body.
-
-        // data = request.body.data;
-        // eventType = request.body.type;
     }
-  
+    console.log("Entering switch...")
     switch (eventType) {
         case 'checkout.session.completed':
             console.log("checkout.session.completed")
