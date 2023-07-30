@@ -17,6 +17,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     typescript: true
 });
 
+async function l(){ 
+    const session = await getServerSession(authOptions)
+    return session
+}
+
 export async function POST(request: NextRequest) {
     console.log("API webhook called")
     console.log("request: ", request.body)
@@ -28,8 +33,6 @@ export async function POST(request: NextRequest) {
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     if (webhookSecret) {
-        console.log("webhookSecret")
-
       let signature = request.headers.get("stripe-signature") as string
 
       try {
@@ -59,8 +62,7 @@ export async function POST(request: NextRequest) {
 
             // You should provision the subscription and save the customer ID to your database.
             console.log("auth options: " + authOptions)
-            const session = await getServerSession(authOptions)
-            console.log("session: ", session)
+            const session = await l()
 
             const client = await createClient()
 
