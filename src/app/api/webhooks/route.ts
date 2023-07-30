@@ -52,15 +52,17 @@ export async function POST(request: NextRequest) {
             console.log("checkout.session.completed")
             if(typeof event !="undefined") {
                 let plan:any = event.data.object
-                console.log(plan)
+                // console.log(plan)
             }
 
             // You should provision the subscription and save the customer ID to your database.
 
             const session = await getServerSession()
+            console.log("session: ", session)
 
             const client = await createClient()
-
+            console.log("client: ", client)
+            
             if(client && session && event){
                 await client.connect()
         
