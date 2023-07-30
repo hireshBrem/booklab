@@ -18,8 +18,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 export async function POST(request: NextRequest) {
-
     console.log("API webhook called")
+    console.log("request: ", request.body)
     let body = await request.text()
     let data;
     let eventType:any;
