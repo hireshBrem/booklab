@@ -8,28 +8,6 @@ import getStripe from "@/app/components/getStripe";
 
 const stripePromise = getStripe();
 
-async function postSubscribe(e:any) {
-    try {
-      const dataSend = {
-        lookup_key: e.target.lookup_key.value,
-        customerEmail: e.target.user_Email.value,
-      };
-      const jsonSend = JSON.stringify(dataSend);
-      const response = await fetch("/api/stripe/create-checkout-session", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {"Content-Type": "application/json",},
-        redirect: "follow",
-        body: jsonSend,
-      });
-    //   if (response.statusCode === 500) {
-    //     console.error(response.message);
-    //     return;
-    //   }
-      return response;
-    } catch (err:any) {console.log(`Error when calling postJSON: `, err.message);}
-  }
-
 export default function CheckoutBtn({price_id, link}:{price_id:string, link:string}) {
     const { data: session } = useSession()
     const[url,setURL] = useState('')
@@ -62,7 +40,7 @@ export default function CheckoutBtn({price_id, link}:{price_id:string, link:stri
             {
                 session ?
                 <a onClick={async()=>{
-                    const res = await fetch('https://booklab-3v3b.vercel.app/api/create-checkout-session', {
+                    const res = await fetch(`https://booklab-3v3b.vercel.app/api/create-checkout-session`, {
                         method: 'POST',
                         body: JSON.stringify({price_id: price_id})
                     }).then(r=>r.json())
