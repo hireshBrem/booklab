@@ -15,7 +15,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export async function POST(request: NextRequest) {
 
     console.log("API webhook called")
-
+    let body = await request.text()
     let data;
     let eventType:any;
 
@@ -25,19 +25,18 @@ export async function POST(request: NextRequest) {
     if (webhookSecret) {
       // Retrieve the event by verifying the signature using the raw body and secret.
       let event;
-      let signature:string|null = request.headers.get("stripe-signature")
+      let signature = request.headers.get("stripe-signature") as string
+
       try {
-        if(typeof request.body === "string" && signature) {
         console.log("signed!")
         event = stripe.webhooks.constructEvent(
-          request.body,
+          body,
           signature,
           webhookSecret
         );
         data = event.data;
         eventType = event.type;
         // return NextResponse.json({received: true})
-        }
         return NextResponse.json({received: true})
 
     } catch (err) {
