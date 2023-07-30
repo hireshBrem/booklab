@@ -6,8 +6,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { createClient } from '@/app/actions/db_actions';
-
+import addCustomerId from '@/app/actions/webhook_actions';
 
 import Cors from 'cors';
 import Stripe from 'stripe';
@@ -17,10 +16,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     typescript: true
 });
 
-async function l(){ 
-    const session = await getServerSession(authOptions)
-    return session
-}
 
 export async function POST(request: NextRequest) {
     console.log("API webhook called")
@@ -61,15 +56,15 @@ export async function POST(request: NextRequest) {
             }
 
             // You should provision the subscription and save the customer ID to your database.
-            console.log("auth options: " + authOptions)
-            const session = await l()
+            
+            // const session = await getServerSession(authOptions)
 
-            const client = await createClient()
+            // const client = await createClient()
 
-            if(client && session && event){
-                await client.connect()
+            if(event){
+                // await client.connect()
         
-                const db = client.db("bookdb")
+                // const db = client.db("bookdb")
                 
                 let plan:any = event.data.object
                 
@@ -80,33 +75,34 @@ export async function POST(request: NextRequest) {
                 console.log("amount: ", amount)
                 console.log("customer_id: ", customer_id)
 
+                addCustomerId(customer_id, amount)
                 //add the customer id to mongodb
-                await db.collection("users")
-                .updateOne({email: session.user?.email},
-                    {$set:{ customer_id: customer_id}})
+                // await db.collection("users")
+                // .updateOne({email: session.user?.email},
+                // //     {$set:{ customer_id: customer_id}})
 
-                if(amount == 1554){
-                    await db.collection("users")
-                    .updateOne({email: session.user?.email}, 
-                    {$set:{ booksLeft: 1}})
-                }
-                if(amount == 3807) {
-                    await db.collection("users")
-                    .updateOne({email: session.user?.email}, 
-                    {$set:{ booksLeft: 2}})
-                } 
-                if(amount == 7693) {
-                    await db.collection("users")
-                    .updateOne({email: session.user?.email}, 
-                    {$set:{ booksLeft: 4}})
-                }
+                // if(amount == 1554){
+                //     await db.collection("users")
+                //     .updateOne({email: session.user?.email}, 
+                //     {$set:{ booksLeft: 1}})
+                // }
+                // if(amount == 3807) {
+                //     await db.collection("users")
+                //     .updateOne({email: session.user?.email}, 
+                //     {$set:{ booksLeft: 2}})
+                // } 
+                // if(amount == 7693) {
+                //     await db.collection("users")
+                //     .updateOne({email: session.user?.email}, 
+                //     {$set:{ booksLeft: 4}})
+                // }
 
                 // await db.collection("users")
                 // .updateOne({email: session.user?.email}, 
                 // {$set:{ booksLeft:}})
 
-                console.log("Added to waiting list")
-                await client.close();
+                // console.log("Added to waiting list")
+                // await client.close();
             }    
             console.log("end of hook")
             return NextResponse.json({msg: "checkout.session.completed"})
