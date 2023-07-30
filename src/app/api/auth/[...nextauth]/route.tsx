@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import { addUserToDB } from "@/app/actions/db_actions"
 
-const handler = NextAuth({
+export const authOptions = {
     providers: [
         GoogleProvider({
         clientId: process.env.GOOGLE_ID || "",
@@ -17,12 +17,13 @@ const handler = NextAuth({
         }),
     ],
     callbacks: {
-        async signIn({ user, account, profile, email, credentials }) {
-            console.log("Sign in")
+        async signIn({ user, account, profile, email, credentials }: any) {
             await addUserToDB(user.email, user.name)
             return(true)
         }
     }
-})
+}
+
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }

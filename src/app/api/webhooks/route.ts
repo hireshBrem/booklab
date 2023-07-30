@@ -5,6 +5,7 @@
 // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 import { NextResponse, NextRequest } from 'next/server'
 import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]/route';
 import { createClient } from '@/app/actions/db_actions';
 
 import Cors from 'cors';
@@ -57,26 +58,21 @@ export async function POST(request: NextRequest) {
 
             // You should provision the subscription and save the customer ID to your database.
 
-            const session = await getServerSession()
+            const session = await getServerSession(authOptions)
             console.log("session: ", session)
 
             const client = await createClient()
-            console.log("client: ", client)
-            
+
             if(client && session && event){
                 await client.connect()
         
                 const db = client.db("bookdb")
-
-                
                 
                 let plan:any = event.data.object
                 
                 let amount = plan.amount_total
 
                 let customer_id = plan.customer
-
-
 
                 console.log("amount: ", amount)
                 console.log("customer_id: ", customer_id)
