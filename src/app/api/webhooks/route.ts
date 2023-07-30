@@ -50,7 +50,11 @@ export async function POST(request: NextRequest) {
     switch (eventType) {
         case 'checkout.session.completed':
             console.log("checkout.session.completed")
-            
+            if(typeof event !="undefined") {
+                let plan:any = event.data.object
+                console.log(plan)
+            }
+
             // You should provision the subscription and save the customer ID to your database.
 
             const session = await getServerSession()
@@ -76,7 +80,7 @@ export async function POST(request: NextRequest) {
                 console.log("Added to waiting list")
                 await client.close();
             }    
-
+            console.log("end of hook")
             return NextResponse.json({msg: "checkout.session.completed"})
 
             // Payment is successful and the subscription is created.
