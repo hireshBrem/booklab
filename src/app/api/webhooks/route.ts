@@ -12,15 +12,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     typescript: true
 });
 
-// This is your Stripe CLI webhook secret for testing your endpoint locally.
-// const endpointSecret = "whsec_d1ea62b23b3289201f353cb9d3d1774bc175337b4abc9bd20f1de19c835ac5ca";
-
 export async function POST(request: NextRequest) {
 
     console.log("API webhook called")
 
     let data;
-    let eventType;
+    let eventType:any;
 
     // Check if webhook signing is configured.
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -31,6 +28,7 @@ export async function POST(request: NextRequest) {
       let signature:string|null = request.headers.get("stripe-signature")
       try {
         if(typeof request.body === "string" && signature) {
+        console.log("signed!")
         event = stripe.webhooks.constructEvent(
           request.body,
           signature,
@@ -38,8 +36,11 @@ export async function POST(request: NextRequest) {
         );
         data = event.data;
         eventType = event.type;
+        // return NextResponse.json({received: true})
         }
-      } catch (err) {
+        return NextResponse.json({received: true})
+
+    } catch (err) {
         console.log(`⚠️  Webhook signature verification failed.`);
         return NextResponse.json({errorCode: 400})
       }
@@ -55,17 +56,22 @@ export async function POST(request: NextRequest) {
     switch (eventType) {
         case 'checkout.session.completed':
             console.log("checkout.session.completed")
-          // Payment is successful and the subscription is created.
-          // You should provision the subscription and save the customer ID to your database.
+            return NextResponse.json({msg: "checkout.session.completed"})
+
+            // Payment is successful and the subscription is created.
+            // You should provision the subscription and save the customer ID to your database.
           break;
         case 'invoice.paid':
+
             console.log("invoice.paid")
-        // Continue to provision the subscription as payments continue to be made.
+            return NextResponse.json({msg: "invoice.paid"})
+            // Continue to provision the subscription as payments continue to be made.
           // Store the status in your database and check when a user accesses your service.
           // This approach helps you avoid hitting rate limits.
           break;
         case 'invoice.payment_failed':
             console.log("invoice.payment_failed")
+            return NextResponse.json({msg: "invoice.payment_failed"})
           // The payment failed or the customer does not have a valid payment method.
           // The subscription becomes past_due. Notify your customer and send them to the
           // customer portal to update their payment information.
