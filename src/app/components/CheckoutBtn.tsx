@@ -62,7 +62,7 @@ export default function CheckoutBtn({price_id, link}:{price_id:string, link:stri
             {
                 session ?
                 <a onClick={async()=>{
-                    const res = await fetch('http://localhost:3000/api/create-checkout-session', {
+                    const res = await fetch('https://booklab-3v3b.vercel.app/api/create-checkout-session', {
                         method: 'POST',
                         body: JSON.stringify({price_id: price_id})
                     }).then(r=>r.json())
