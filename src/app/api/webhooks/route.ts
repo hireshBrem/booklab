@@ -65,12 +65,38 @@ export async function POST(request: NextRequest) {
                 await client.connect()
         
                 const db = client.db("bookdb")
+
+                
                 
                 let plan:any = event.data.object
-                console.log(plan)
+                
+                let amount = plan.amount_total
 
-                if(plan == ""){
+                let customer_id = plan.customer
 
+
+
+                console.log("amount: ", amount)
+                console.log("customer_id: ", customer_id)
+
+                await db.collection("users")
+                .updateOne({email: session.user?.email},
+                    {$set:{ customer_id: customer_id}})
+
+                if(amount == 1554){
+                    await db.collection("users")
+                    .updateOne({email: session.user?.email}, 
+                    {$set:{ booksLeft: 1}})
+                }
+                if(amount == 3807) {
+                    await db.collection("users")
+                    .updateOne({email: session.user?.email}, 
+                    {$set:{ booksLeft: 2}})
+                } 
+                if(amount == 7693) {
+                    await db.collection("users")
+                    .updateOne({email: session.user?.email}, 
+                    {$set:{ booksLeft: 4}})
                 }
 
                 // await db.collection("users")
