@@ -5,6 +5,7 @@ import MainNavbar from './components/MainNavbar'
 import AuthProvider from './components/AuthProvider'
 import Footer from './components/Footer'
 import { Analytics } from '@vercel/analytics/react';
+import Popup from './components/Popup'
 
 const inter = Inter({ 
     subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
         <body className={`${inter.variable} ${martianMono.variable} bg-gray-900`}>
             <AuthProvider>
+                <Popup />
                 <MainNavbar />
                 {children}
                 <Analytics />

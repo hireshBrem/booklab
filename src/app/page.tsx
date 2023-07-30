@@ -121,7 +121,7 @@ export default async function Home() {
                                 <span>Free updates: <span className="font-semibold">6 months</span></span>
                             </li>
                         </ul>
-                        <CheckoutBtn price_id="price_1NYw5XDZ67e7j3mHZF39O0Mt" />
+                        <CheckoutBtn price_id="price_1NYw5XDZ67e7j3mHZF39O0Mt" link="https://buy.stripe.com/test_dR6g0Od6Tc7X2aY5km" />
                     </div>
                     {/* <!-- Pricing Card --> */}
                     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
@@ -159,7 +159,7 @@ export default async function Home() {
                                 <span>Free updates: <span className="font-semibold">24 months</span></span>
                             </li>
                         </ul>
-                        <CheckoutBtn price_id="price_1NYw6aDZ67e7j3mHsx3gL9Vt" />
+                        <CheckoutBtn price_id="price_1NYw6aDZ67e7j3mHsx3gL9Vt" link="https://buy.stripe.com/test_aEUcOC2sf0pf9DqdQR" />
                     </div>
                     {/* <!-- Pricing Card --> */}
                     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
@@ -197,7 +197,7 @@ export default async function Home() {
                                 <span>Free updates: <span className="font-semibold">36 months</span></span>
                             </li>
                         </ul>
-                        <CheckoutBtn price_id="price_1NYw7WDZ67e7j3mHjZ8tjMOs" />
+                        <CheckoutBtn price_id="price_1NYw7WDZ67e7j3mHjZ8tjMOs" link='https://buy.stripe.com/test_6oE6qe8QD0pfdTGfYY' />
                     </div>
                 </div>
             </div>

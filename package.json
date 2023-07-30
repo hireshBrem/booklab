@@ -9,17 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/core": "^7.22.9",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@pdftron/pdfjs-express": "^8.7.4",
     "@pdftron/pdfjs-express-viewer": "^8.7.4",
+    "@stripe/react-stripe-js": "^2.1.1",
+    "@stripe/stripe-js": "^1.54.1",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "@vercel/analytics": "^1.0.1",
     "autoprefixer": "10.4.14",
+    "cors": "^2.8.5",
     "mongodb": "^5.7.0",
-    "next": "13.4.9",
+    "next": "^13.4.9",
     "next-auth": "^4.22.3",
     "pdf-lib": "^1.17.1",
     "postcss": "8.4.25",
@@ -32,9 +36,36 @@
     "typewriter-effect": "^2.20.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/fabric": "^5.3.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "fabric": "^5.3.0",
+    "node-loader": "^2.0.0",
     "raw-loader": "^4.0.2"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/babel-preset-env",
+            "@babel/preset-react",
+            "@babel/preset-stage-0",
+            "@babel/preset-es2015",
+            "next/babel",
+            "babel-preset-stage-0",
+            "babel-preset-es2015",
+            "babel-preset-react"
+          ]
+        }
+      ]
+    ]
   }
 }

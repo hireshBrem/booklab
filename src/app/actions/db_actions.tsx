@@ -126,28 +126,43 @@ export async function addComment(_comment:string, page:number, _name:string | nu
 
         let query = { title: _title }
 
-        console.log(
-            _comment, page, _name, _title, _date
-        )
         let i = page-1
         i.toString()
 
-        await db.collection("books")
-        .updateOne(query,
-        {
-            $push: {
-                ['comments.' + i]: {
-                    $each: [{
-                        "comment_text": _comment, 
-                        "date": _date, 
-                        "sender_name": _name
-                    }],
-                }
+        await db.collection("books").findOne(query).then(async(result:any) => {
+            if(result.comments[i]==null){
+                await db.collection("books")
+                .updateOne(query,
+                {
+                    $set: {
+                        ['comments.' + i]: [{
+                            "comment_text": _comment, 
+                            "date": _date, 
+                            "sender_name": _name
+                        }]
+                    }
+                })
             }
-        }            
-        )
-        revalidatePath("/books/[id]")
-        await client.close();
+            else{
+                await db.collection("books")
+                .updateOne(query,
+                {
+                    $push: {
+                        ['comments.' + i]: {
+                            $each: [{
+                                "comment_text": _comment, 
+                                "date": _date, 
+                                "sender_name": _name
+                            }],
+                        }
+                    }
+                }
+
+                )
+                revalidatePath("/books/[id]")
+                await client.close();
+            }
+        })
     }
 
 }
@@ -167,7 +182,7 @@ export async function checkAllowedBook(email: string | null | undefined) {
 
         await client.close();
 
-        if(user && user.booksLeft!=0) {
+        if(user && user.booksLeft>0) {
             return(true)
         }
         else {
@@ -223,4 +238,26 @@ export async function addUserToDB(_email:string | null | undefined, _name:string
         })
         client.close()
     }
+}
+
+export async function sendFeedback(_email:string | null | undefined, _feedback:string, _rating:string) {
+
+    const client = await createClient()
+    
+    if(client){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        await db.collection("feedback")
+        .insertOne({
+            email: _email,
+            comment: _feedback,
+            rating: _rating
+        });
+
+        await client.close();
+        return(true)
+    }
+    return(false)
 }
