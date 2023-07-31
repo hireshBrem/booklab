@@ -23,7 +23,7 @@ export default async function Books() {
                         </a>
                         )
                 }
-                if(user?.plan!="free" && user?.ownedBooks?.includes(book._id)==false){
+                if(user?.plan!="free" && user?.owned_books?.includes(book._id)==false){
                     console.log("You have a valid subscription but you do not own this book")
                     return(
                         <button key={index}>

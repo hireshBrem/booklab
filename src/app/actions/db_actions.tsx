@@ -184,7 +184,7 @@ export async function checkAllowedBook(email: string | null | undefined, bookId:
         })
 
         await client.close();
-        if(user) {
+        if(user?.owned_books != undefined) {
             user.owned_books.forEach((book:string) => {
                 console.log(bookId)
                 console.log(book)
@@ -241,6 +241,7 @@ export async function addUserToDB(_email:string | null | undefined, _name:string
             plan: "free",
             signedUp: new Date().toUTCString(),
             booksLeft: 0,
+            owned_books: [],
             customer_id: null,
             subscription: null
         })

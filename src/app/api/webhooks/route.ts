@@ -100,9 +100,11 @@ export async function POST(request: NextRequest) {
                     console.log("book_id: ", book_id)
 
                     await db.collection("users")
-                    .updateOne({email: _email},{
-                        $push: {owned_books: book_id}
-                    })
+                    .insertOne({email: _email, owned_books: book_id})
+
+                    // .updateOne({email: _email},{
+                    //     $push: {owned_books: book_id}
+                    // })
                 }
 
                 await client.close();
