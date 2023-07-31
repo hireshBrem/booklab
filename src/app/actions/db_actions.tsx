@@ -184,8 +184,8 @@ export async function checkAllowedBook(email: string | null | undefined, bookId:
         })
 
         await client.close();
-        if(user?.owned_books != undefined) {
-            user.owned_books.forEach((book:string) => {
+        if(user?.owned_books.length>0) {
+            user?.owned_books.forEach((book:string) => {
                 console.log(bookId)
                 console.log(book)
                 if(bookId==book){
