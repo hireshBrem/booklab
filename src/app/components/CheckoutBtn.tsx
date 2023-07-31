@@ -42,7 +42,7 @@ export default function CheckoutBtn({price_id}:{price_id:string}) {
                 <a onClick={async()=>{
                     const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/create-checkout-session`, {
                         method: 'POST',
-                        body: JSON.stringify({price_id: price_id})
+                        body: JSON.stringify({email:session.user?.email, price_id: price_id})
                     }).then(r=>r.json())
                     console.log(res.url)
                     setURL(res.url)

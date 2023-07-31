@@ -17,14 +17,14 @@ export default async function Page({params, searchParams}: {
 }) {
 
     const session = await getServerSession()
-    const isAllowedToChooseABook  = await checkAllowedBook(session?.user?.email)
+    const isAllowedToViewBook  = await checkAllowedBook(session?.user?.email, params.id)
 
-    console.log(isAllowedToChooseABook)
+    console.log(isAllowedToViewBook)
     let {_id, title, data, comments}:any = await getPDF(params.id)
     
     let book = {title, data, comments}
     if(session) {
-        if(isAllowedToChooseABook==false) {
+        if(isAllowedToViewBook==false) {
             return(
                 <div className="text-white font-martian_mono max-w-6xl m-auto mb-96 text-center">
                     <h1 className="text-xl underline mb-4">You cannot choose any more books!</h1>

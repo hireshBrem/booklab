@@ -21,12 +21,13 @@ const cors = Cors({
 export async function POST(request: NextRequest) {
     
     try{
-        const { price_id } = await request.json()
+        const { email, price_id } = await request.json()
 
         console.log("priceId: " + price_id)
 
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
+            customer_email: email,
             line_items: [
                 {
                 price: price_id,

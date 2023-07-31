@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
 
                 let customer_id = plan.customer
 
-                let _email = plan.customer_details.email
+                let _email = plan.customer_email
 
                 let subscription_id = plan.subscription
 

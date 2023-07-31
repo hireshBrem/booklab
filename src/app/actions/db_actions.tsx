@@ -168,7 +168,9 @@ export async function addComment(_comment:string, page:number, _name:string | nu
 
 }
 
-export async function checkAllowedBook(email: string | null | undefined) {
+export async function checkAllowedBook(email: string | null | undefined, bookId:string) {
+    let isAllowed = false
+
     const client = await createClient()
 
     if(client){
@@ -182,15 +184,19 @@ export async function checkAllowedBook(email: string | null | undefined) {
         })
 
         await client.close();
+        if(user) {
+            user.owned_books.forEach((book:string) => {
+                console.log(bookId)
+                console.log(book)
+                if(bookId==book){
+                    isAllowed = true
+                }
+            });    
+        }
 
-        if(user && user.booksLeft>0) {
-            return(true)
-        }
-        else {
-            return(false)
-        }
+
     }
-
+    return(isAllowed)
 }
 
 export async function checkUserInDB(_email: string | null | undefined) {
@@ -282,3 +288,22 @@ export async function getUser(_email:string | null | undefined) {
         return(user)
     }
 }    
+
+export async function getBook(_id:string) {
+    const client = await createClient()
+    
+    if(client){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        const book = await db.collection("books")
+        .findOne({
+            _id: new ObjectId(_id)
+        })
+
+        await client.close();
+
+        return(book)
+    }
+}

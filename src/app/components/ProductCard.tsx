@@ -34,7 +34,7 @@ export default function ProductCard({id, title, cover, price, price_id, hasSubsc
                     <a onClick={async()=>{
                         const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/create-book-checkout-session`, {
                             method: 'POST',
-                            body: JSON.stringify({price_id: price_id, book_id: id })
+                            body: JSON.stringify({email: session.user?.email, price_id: price_id, book_id: id })
                         }).then(r=>r.json())
                         setURL(res.url)
 
