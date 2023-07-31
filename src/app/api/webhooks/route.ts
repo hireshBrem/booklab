@@ -91,9 +91,9 @@ export async function POST(request: NextRequest) {
                 }
                 if(payment_mode == "payment"){
                     // adding customer id to mongodb
-                    await db.collection("users")
-                    .updateOne({email: _email},
-                        {$set:{ customer_id: customer_id}})
+                    // await db.collection("users")
+                    // .updateOne({email: _email},
+                    //     {$set:{ customer_id: customer_id}})
                         
                     let book_id = plan.metadata.book_id
                     //adding book to owned books
