@@ -64,21 +64,20 @@ export async function POST(request: NextRequest) {
 
                 let subscription_id = plan.subscription
 
+                let payment_mode = plan.mode
+
+
                 console.log("amount: ", amount)
                 console.log("customer_id: ", customer_id)
                 console.log("email: ", _email)
+                console.log("payment mode: ", payment_mode)
 
                 // adding customer id to mongodb
                 await db.collection("users")
                 .updateOne({email: _email},
                     {$set:{ customer_id: customer_id}})
 
-                if(amount == 1554){
-                    // adding books limit to mongodb
-                    await db.collection("users")
-                    .updateOne({email: _email}, 
-                    {$set:{ booksLeft: 1}})
-
+                if(amount == 1944 && payment_mode == "subscription"){
                     //adding plan to mongodb
                     await db.collection("users")
                     .updateOne({email: _email}, 
@@ -90,35 +89,15 @@ export async function POST(request: NextRequest) {
                     {$set:{ subscription: subscription_id}})
                     
                 }
-                if(amount == 3807) {
-                    await db.collection("users")
-                    .updateOne({email: _email}, 
-                    {$set:{ booksLeft: 2}})
+                if(payment_mode == "payment"){
+                    let book_id = plan.metadata.book_id
+                    //adding book to owned books
+                    console.log("book_id: ", book_id)
 
-                    //adding plan to mongodb
                     await db.collection("users")
-                    .updateOne({email: _email}, 
-                    {$set:{ plan: "premium"}})
-
-                    //adding subscription to mongodb
-                    await db.collection("users")
-                    .updateOne({email: _email}, 
-                    {$set:{ subscription: subscription_id}})
-                } 
-                if(amount == 7693) {
-                    await db.collection("users")
-                    .updateOne({email: _email}, 
-                    {$set:{ booksLeft: 4}})
-
-                    //adding plan to mongodb
-                    await db.collection("users")
-                    .updateOne({email: _email}, 
-                    {$set:{ plan: "enterprise"}})
-
-                    //adding subscription to mongodb
-                    await db.collection("users")
-                    .updateOne({email: _email}, 
-                    {$set:{ subscription: subscription_id}})
+                    .updateOne({email: _email},{
+                        $push: {owned_books: book_id}
+                    })
                 }
 
                 await client.close();

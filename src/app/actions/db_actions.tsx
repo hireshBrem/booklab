@@ -235,7 +235,9 @@ export async function addUserToDB(_email:string | null | undefined, _name:string
             plan: "free",
             signedUp: new Date().toUTCString(),
             booksLeft: 0,
-            ownedBooks: null
+            ownedBooks: [],
+            customer_id: null,
+            subscription: null
         })
         client.close()
     }
@@ -262,3 +264,22 @@ export async function sendFeedback(_email:string | null | undefined, _feedback:s
     }
     return(false)
 }
+
+export async function getUser(_email:string | null | undefined) {
+    const client = await createClient()
+    
+    if(client){
+        await client.connect()
+
+        const db = client.db("bookdb")
+
+        const user = await db.collection("users")
+        .findOne({
+            email: _email
+        })
+
+        await client.close();
+
+        return(user)
+    }
+}    

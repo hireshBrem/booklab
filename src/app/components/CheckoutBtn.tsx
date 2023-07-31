@@ -8,7 +8,7 @@ import getStripe from "@/app/components/getStripe";
 
 const stripePromise = getStripe();
 
-export default function CheckoutBtn({price_id, link}:{price_id:string, link:string}) {
+export default function CheckoutBtn({price_id}:{price_id:string}) {
     const { data: session } = useSession()
     const[url,setURL] = useState('')
 
@@ -40,7 +40,7 @@ export default function CheckoutBtn({price_id, link}:{price_id:string, link:stri
             {
                 session ?
                 <a onClick={async()=>{
-                    const res = await fetch(`https://booklab-3v3b.vercel.app/api/create-checkout-session`, {
+                    const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/create-checkout-session`, {
                         method: 'POST',
                         body: JSON.stringify({price_id: price_id})
                     }).then(r=>r.json())

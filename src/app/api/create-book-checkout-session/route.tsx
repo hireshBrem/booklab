@@ -1,7 +1,9 @@
 import { NextResponse, NextRequest } from 'next/server'
 import Cors from 'cors';
 import Stripe from 'stripe';
-
+import { createClient } from '@/app/actions/db_actions';
+import { MongoClient, ObjectId, ServerApiVersion } from 'mongodb'
+import { revalidatePath } from 'next/cache'
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 
@@ -19,14 +21,16 @@ const cors = Cors({
 });
 
 export async function POST(request: NextRequest) {
-    
-    try{
-        const { price_id } = await request.json()
+    const { book_id, price_id } = await request.json()
 
+    try{
         console.log("priceId: " + price_id)
 
         const session = await stripe.checkout.sessions.create({
-            mode: 'subscription',
+            mode: 'payment',
+            metadata: {
+                book_id: book_id
+            },
             line_items: [
                 {
                 price: price_id,

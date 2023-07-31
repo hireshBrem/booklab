@@ -84,13 +84,14 @@ export default async function Home() {
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pricing</h2>
                     <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Here at BookLab, we provide readers with a platform where they can read collaboratively.</p>
                 </div>
-                <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+                {/* lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 */}
+                <div className="space-y-8 flex justify-center">
                     {/* <!-- Pricing Card --> */}
                     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
                         <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
                         <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option to just get started.</p>
                         <div className="flex justify-center items-baseline my-8">
-                            <span className="mr-2 text-5xl font-extrabold">$20</span>
+                            <span className="mr-2 text-5xl font-extrabold">$25</span>
                             <span className="text-gray-500">/month</span>
                         </div>
                         {/* <!-- List --> */}
@@ -98,83 +99,12 @@ export default async function Home() {
                             <li className="flex items-center space-x-3">
                                 {/* <!-- Icon --> */}
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>3 writings /month</span>
+                                <span>Access to all collaborative tools</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 {/* <!-- Icon --> */}
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Upto 5 comments /book</span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Team size: <span className="font-semibold">1 developer</span></span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Premium support: <span className="font-semibold">6 months</span></span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Free updates: <span className="font-semibold">6 months</span></span>
-                            </li>
-                        </ul>
-                        <CheckoutBtn price_id="price_1NYw5XDZ67e7j3mHZF39O0Mt" link="https://buy.stripe.com/test_dR6g0Od6Tc7X2aY5km" />
-                    </div>
-                    {/* <!-- Pricing Card --> */}
-                    <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-                        <h3 className="mb-4 text-2xl font-semibold">Premium</h3>
-                        <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Relevant for frequent readers.</p>
-                        <div className="flex justify-center items-baseline my-8">
-                            <span className="mr-2 text-5xl font-extrabold">$49</span>
-                            <span className="text-gray-500">/month</span>
-                        </div>
-                        {/* <!-- List --> */}
-                        <ul role="list" className="mb-8 space-y-4 text-left">
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>5 writings /month</span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>10 comments /book</span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Team size: <span className="font-semibold">10 developers</span></span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Premium support: <span className="font-semibold">24 months</span></span>
-                            </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Free updates: <span className="font-semibold">24 months</span></span>
-                            </li>
-                        </ul>
-                        <CheckoutBtn price_id="price_1NYw6aDZ67e7j3mHsx3gL9Vt" link="https://buy.stripe.com/test_aEUcOC2sf0pf9DqdQR" />
-                    </div>
-                    {/* <!-- Pricing Card --> */}
-                    <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-                        <h3 className="mb-4 text-2xl font-semibold">Enterprise</h3>
-                        <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best for immersive reading experiences.</p>
-                        <div className="flex justify-center items-baseline my-8">
-                            <span className="mr-2 text-5xl font-extrabold">$99</span>
-                            <span className="text-gray-500">/month</span>
-                        </div>
-                        {/* <!-- List --> */}
-                        <ul role="list" className="mb-8 space-y-4 text-left">
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
-                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>10 writings /month</span>
+                                <span>Customer support</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 {/* <!-- Icon --> */}
@@ -184,21 +114,86 @@ export default async function Home() {
                             <li className="flex items-center space-x-3">
                                 {/* <!-- Icon --> */}
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                <span>Team size: <span className="font-semibold">100+ developers</span></span>
+                                <span>Unlimited eBooks</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 {/* <!-- Icon --> */}
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>Customer support</span>
+                            </li>
+                        </ul>
+                        <CheckoutBtn price_id="price_1NZwYQDZ67e7j3mHMn3WIkFx" />
+                    </div>
+                    {/* <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                        <h3 className="mb-4 text-2xl font-semibold">Premium</h3>
+                        <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Relevant for frequent readers.</p>
+                        <div className="flex justify-center items-baseline my-8">
+                            <span className="mr-2 text-5xl font-extrabold">$49</span>
+                            <span className="text-gray-500">/month</span>
+                        </div>
+                        <ul role="list" className="mb-8 space-y-4 text-left">
+                            <li className="flex items-center space-x-3">
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>5 writings /month</span>
+                            </li>
+                            <li className="flex items-center space-x-3">
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>10 comments /book</span>
+                            </li>
+                            <li className="flex items-center space-x-3">
+                                
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>Team size: <span className="font-semibold">10 developers</span></span>
+                            </li>
+                            <li className="flex items-center space-x-3">
+                                
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>Premium support: <span className="font-semibold">24 months</span></span>
+                            </li>
+                            <li className="flex items-center space-x-3">
+                                
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>Free updates: <span className="font-semibold">24 months</span></span>
+                            </li>
+                        </ul>
+                        <CheckoutBtn price_id="price_1NYw6aDZ67e7j3mHsx3gL9Vt" link="https://buy.stripe.com/test_aEUcOC2sf0pf9DqdQR" />
+                    </div>
+                    <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                        <h3 className="mb-4 text-2xl font-semibold">Enterprise</h3>
+                        <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best for immersive reading experiences.</p>
+                        <div className="flex justify-center items-baseline my-8">
+                            <span className="mr-2 text-5xl font-extrabold">$99</span>
+                            <span className="text-gray-500">/month</span>
+                        </div>
+                        <ul role="list" className="mb-8 space-y-4 text-left">
+                            <li className="flex items-center space-x-3">
+                                
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>10 writings /month</span>
+                            </li>
+                            <li className="flex items-center space-x-3">
+                                
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>Unlimited comments</span>
+                            </li>
+                            <li className="flex items-center space-x-3">
+                                
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <span>Team size: <span className="font-semibold">100+ developers</span></span>
+                            </li>
+                            <li className="flex items-center space-x-3">
+                                
+                                <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                 <span>Premium support: <span className="font-semibold">36 months</span></span>
                             </li>
                             <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
+                            
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                 <span>Free updates: <span className="font-semibold">36 months</span></span>
                             </li>
                         </ul>
                         <CheckoutBtn price_id="price_1NYw7WDZ67e7j3mHjZ8tjMOs" link='https://buy.stripe.com/test_6oE6qe8QD0pfdTGfYY' />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
