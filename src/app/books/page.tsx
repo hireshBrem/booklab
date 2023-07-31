@@ -16,13 +16,11 @@ export default async function Books() {
             books.map((book:any, index:number) => {
                 if(user?.plan=="free"){
                     return(
-                        <Link key={index} href={{
-                            pathname: `/#pricing`
-                        }}>
+                        <a href="/#pricing">
                             <div className="border-2 rounded-md m-2 p-2 border-blue-700 hover:scale-110 ease-in-out duration-200">
                                 <ProductCard id={JSON.stringify(book._id)} hasSubscription={false} title={book.title} cover={book.cover} price={book.price} price_id={book.price_id} />
                             </div>
-                        </Link>
+                        </a>
                         )
                 }
                 if(user?.plan!="free" && user?.ownedBooks?.includes(book._id)==false){
