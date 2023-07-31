@@ -1,13 +1,18 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 
 export default function MainNavbar() {
     const { data: session } = useSession();
 
     const[dropdownNavbar, setDropdownNavbar] = useState(false)
-    const[burgerMenu, setBurgerMenu] = useState(true)
+    const[burgerMenu, setBurgerMenu] = useState(false)
+    useEffect(()=>{
+        if(window.screen.width>768) {
+            setBurgerMenu(true)
+        }
+    })
 
     return(
     
@@ -23,7 +28,7 @@ export default function MainNavbar() {
             </svg>
         </button>
         {
-        burgerMenu === false ?
+        burgerMenu === true ?
         <div className="w-full md:block md:w-auto text-sm content-center" id="navbar-dropdown">
         <ul className="text-indigo-500 flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
