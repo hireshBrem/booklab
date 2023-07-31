@@ -46,13 +46,7 @@ export async function POST(request: NextRequest) {
     switch (eventType) {
         case 'checkout.session.completed':
             console.log("checkout.session.completed")
-            if(typeof event !="undefined") {
-                let plan:any = event.data.object
-                // console.log(plan)
-            }
-
-            // You should provision the subscription and save the customer ID to your database.
-    
+            
             const client = await createClient()
 
             if(client && event){
@@ -65,41 +59,70 @@ export async function POST(request: NextRequest) {
                 let amount = plan.amount_total
 
                 let customer_id = plan.customer
+
                 let _email = plan.customer_details.email
+
+                let subscription_id = plan.subscription
 
                 console.log("amount: ", amount)
                 console.log("customer_id: ", customer_id)
                 console.log("email: ", _email)
 
-                //add the customer id to mongodb
+                // adding customer id to mongodb
                 await db.collection("users")
                 .updateOne({email: _email},
                     {$set:{ customer_id: customer_id}})
 
                 if(amount == 1554){
+                    // adding books limit to mongodb
                     await db.collection("users")
                     .updateOne({email: _email}, 
                     {$set:{ booksLeft: 1}})
+
+                    //adding plan to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email}, 
+                    {$set:{ plan: "starter"}})
+
+                    //adding subscription to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email}, 
+                    {$set:{ subscription: subscription_id}})
+                    
                 }
                 if(amount == 3807) {
                     await db.collection("users")
                     .updateOne({email: _email}, 
                     {$set:{ booksLeft: 2}})
+
+                    //adding plan to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email}, 
+                    {$set:{ plan: "premium"}})
+
+                    //adding subscription to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email}, 
+                    {$set:{ subscription: subscription_id}})
                 } 
                 if(amount == 7693) {
                     await db.collection("users")
                     .updateOne({email: _email}, 
                     {$set:{ booksLeft: 4}})
+
+                    //adding plan to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email}, 
+                    {$set:{ plan: "enterprise"}})
+
+                    //adding subscription to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email}, 
+                    {$set:{ subscription: subscription_id}})
                 }
 
-                // await db.collection("users")
-                // .updateOne({email: session.user?.email}, 
-                // {$set:{ booksLeft:}})
-
-                console.log("Added to waiting list")
                 await client.close();
             }    
-            console.log("end of hook")
             return NextResponse.json({msg: "checkout.session.completed"})
 
             // Payment is successful and the subscription is created.
