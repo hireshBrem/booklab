@@ -235,7 +235,6 @@ export async function addUserToDB(_email:string | null | undefined, _name:string
             plan: "free",
             signedUp: new Date().toUTCString(),
             booksLeft: 0,
-            ownedBooks: [],
             customer_id: null,
             subscription: null
         })

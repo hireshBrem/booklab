@@ -72,12 +72,12 @@ export async function POST(request: NextRequest) {
                 console.log("email: ", _email)
                 console.log("payment mode: ", payment_mode)
 
-                // adding customer id to mongodb
-                await db.collection("users")
-                .updateOne({email: _email},
-                    {$set:{ customer_id: customer_id}})
-
                 if(amount == 1944 && payment_mode == "subscription"){
+                    // adding customer id to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email},
+                        {$set:{ customer_id: customer_id}})
+
                     //adding plan to mongodb
                     await db.collection("users")
                     .updateOne({email: _email}, 
@@ -90,6 +90,11 @@ export async function POST(request: NextRequest) {
                     
                 }
                 if(payment_mode == "payment"){
+                    // adding customer id to mongodb
+                    await db.collection("users")
+                    .updateOne({email: _email},
+                        {$set:{ customer_id: customer_id}})
+                        
                     let book_id = plan.metadata.book_id
                     //adding book to owned books
                     console.log("book_id: ", book_id)
