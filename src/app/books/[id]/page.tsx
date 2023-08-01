@@ -25,13 +25,7 @@ export default async function Page({params, searchParams}: {
     let book = {title, data, comments}
     if(session) {
         if(isAllowedToViewBook==false) {
-            return(
-                <div className="text-white font-martian_mono max-w-6xl m-auto mb-96 text-center">
-                    <h1 className="text-xl underline mb-4">You cannot choose any more books!</h1>
-                    <h1>To view our plans visit our <a href="/#pricing" className="underline">pricing section</a>.</h1>
-                    <h1>If you are already on a plan, and wish to upgrade your plan to a higher tier, <a href="/contact" className="underline">contact us</a>.</h1>
-                </div>
-            )
+            redirect("/books")
         }
         else{
         return (

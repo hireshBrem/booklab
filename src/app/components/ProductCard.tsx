@@ -26,7 +26,7 @@ export default function ProductCard({id, title, cover, price, price_id, hasSubsc
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
             </a>
             <div className="flex items-center justify-between space-x-5">
-                <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
+                <span className="text-3xl font-bold text-gray-900 dark:text-white">{price}</span>
                 <input type="hidden" name="priceId" value={price_id} />
                 {
                 session ?
