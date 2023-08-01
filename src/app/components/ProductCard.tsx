@@ -16,17 +16,17 @@ export default function ProductCard({id, title, cover, price, price_id, hasSubsc
 
     return (
        
-    <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full rounded-lg shadow">
         <a href="#" className="flex justify-center my-2">
-            <Image className="rounded-t-lg" width={80} height={160} src={cover} alt="product image" />
+            <Image className="rounded-lg" width={100} height={200} src={cover} alt="product image" />
             {/* <div className="bg-red-500 w-20 h-40 flex justify-center"></div> */}
         </a>
         <div className="px-5 pb-5 spaxe-x-4 space-y-2">
             <a href="#">
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+                <h5 className="text-xl tracking-tight text-gray-900 dark:text-white">{title}</h5>
             </a>
             <div className="flex items-center justify-between space-x-5">
-                <span className="text-3xl font-bold text-gray-900 dark:text-white">{price}</span>
+                <span className="text-3xl text-gray-900 dark:text-white">{price}</span>
                 <input type="hidden" name="priceId" value={price_id} />
                 {
                 session ?
@@ -38,9 +38,9 @@ export default function ProductCard({id, title, cover, price, price_id, hasSubsc
                         }).then(r=>r.json())
                         setURL(res.url)
 
-                    }} type="submit" className="text-white hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-indigo-500 to-[#BA68C8] focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Purchase</a>
-                    :<a href="/#pricing" type="submit" className="text-white hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-indigo-500 to-[#BA68C8] focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Purchase</a>
-                :<a href='/api/auth/signin' type="submit" className="text-white hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-indigo-500 to-[#BA68C8] focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Sign Up First</a>
+                    }} type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Purchase</a>
+                    :<a href="/#pricing" type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">Purchase</a>
+                :<a href='/api/auth/signin' type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">Sign Up First</a>
             }
             </div>
         </div>

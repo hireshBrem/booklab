@@ -2,6 +2,7 @@
 
 import { MongoClient, ObjectId, ServerApiVersion } from 'mongodb'
 import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation';
 
 // Local function
 export async function createClient() {
@@ -306,5 +307,20 @@ export async function getBook(_id:string) {
         await client.close();
 
         return(book)
+    }
+}
+
+export async function addBookToUser(book_id:string, _email:string | null | undefined) {
+
+    const client = await createClient()
+    if(client) {
+        const db = client.db("bookdb")
+
+        await db.collection("users")
+        .updateOne({email: _email},{
+            $push: {owned_books: book_id}
+        })
+
+        client.close()
     }
 }
