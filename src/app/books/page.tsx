@@ -25,7 +25,8 @@ export default async function Books() {
                                 <h5 className="text-xl tracking-tight text-gray-900 dark:text-white">{book.title}</h5>
                             </a>
                             <div className="flex items-center justify-between space-x-5">
-                                <a href="/#pricing" type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">Purchase</a>                                
+                                <h1 className="text-xl">{book.price}</h1>
+                                <a href="/#pricing" type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg px-5 py-2.5 text-center dark:text-white">Purchase</a>                                
                             </div>
                         </div>
                     </div>
@@ -41,8 +42,8 @@ export default async function Books() {
                                     <h5 className="text-xl tracking-tight text-gray-900 dark:text-white">{book.title}</h5>
                                 </a>
                                 <div className="flex items-center justify-between space-x-5">
-                                    <h1 className="text-3xl">{book.price}</h1>
-                                    <a href={`/books/${book._id}`} type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white">View</a>                                
+                                    <h1 className="text-xl">{book.price}</h1>
+                                    <a href={`/books/${book._id}`} type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg px-5 py-2.5 text-center dark:text-white">View</a>                                
                                 </div>
                             </div>
                         </div>
