@@ -50,8 +50,10 @@ export default function MainNavbar() {
                 {/* <!-- Dropdown menu --> */}
                 {
                 dropdownNavbar === true ?
-                <div id="dropdownNavbar" className="z-10 mt-5 absolute font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <div id="dropdownNavbar" className="z-10 mt-5 absolute font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-48 dark:bg-gray-700 dark:divide-gray-600">
                     <ul className="text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <h1 className="text-xs p-1">{session.user?.email}</h1>
+
                     <li>
                         <a href="/mybooks" className="block px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-600 dark:hover:text-white">My Books</a>
                     </li>

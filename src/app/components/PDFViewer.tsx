@@ -132,7 +132,7 @@ export default function PDFViewer({book}: {book: any}) {
                 </div>
             </div>
             </form>
-            {/* <p className="ml-auto text-xs text-gray-500 dark:text-gray-400">Remember, contributions to this topic should follow our <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline">Community Guidelines</a>.</p> */}
+            <p className="ml-auto text-xs text-gray-500 dark:text-gray-400">Remember, contributions to this topic should follow our <a href="/community-guidelines" className="text-blue-600 dark:text-blue-500 hover:underline">Community Guidelines</a>.</p>
             </div>
             </div>
         </div>

@@ -16,6 +16,8 @@ export default async function Books() {
         <div className="text-white text-lg max-w-4xl m-auto flex flex-wrap justify-center mb-24 sapce-y-2">
         {
             books.map((book:any, index:number) => {
+                console.log(`Book ${book.title} : ` + user?.owned_books?.includes(book._id))
+
                 if(user?.plan=="free"){
                     return(
                     <div className="border-2 items-center bg-gray-700 rounded-md m-2 border-blue-700 hover:scale-110 ease-in-out duration-200 flex flex-col justify-center">
@@ -26,14 +28,14 @@ export default async function Books() {
                             </a>
                             <div className="flex items-center justify-between space-x-5">
                                 <h1 className="text-xl">{book.price}</h1>
-                                <a href="/#pricing" type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg px-5 py-2.5 text-center dark:text-white">Purchase</a>                                
+                                <a href="/#pricing" type="submit" className="text-white text-sm bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg px-5 py-2.5 text-center dark:text-white">Purchase</a>                                
                             </div>
                         </div>
                     </div>
                     )
                 }
                 else if(user?.plan!="free" && user?.owned_books?.includes(book._id)==true){
-                    console.log("You have a valid subscription and own this book")
+                    console.log("You have a valid subscription and own this book: " +  user?.owned_books?.includes(book._id))
                     return(
                         <div className="border-2 bg-gray-700 items-center rounded-md m-2 border-blue-700 hover:scale-110 ease-in-out duration-200 flex flex-col justify-center">
                             <Image className="rounded-lg" width={100} height={200} src={book.cover} alt="product image" />
@@ -43,7 +45,7 @@ export default async function Books() {
                                 </a>
                                 <div className="flex items-center justify-between space-x-5">
                                     <h1 className="text-xl">{book.price}</h1>
-                                    <a href={`/books/${book._id}`} type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg px-5 py-2.5 text-center dark:text-white">View</a>                                
+                                    <a href={`/books/${book._id}`} type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] text-sm font-medium rounded-lg px-5 py-2.5 text-center dark:text-white">View</a>                                
                                 </div>
                             </div>
                         </div>
@@ -67,6 +69,14 @@ export default async function Books() {
                     )
 
                 }
+                else if(user?.plan!="free" && user?.owned_books?.includes(book._id)==false) {
+                    return(
+                    <div className="border-2 bg-gray-700 rounded-md m-2 border-blue-700 hover:scale-110 ease-in-out duration-200">
+                        <ProductCard id={book._id} hasSubscription={true} title={book.title} cover={book.cover} price={book.price} price_id={book.price_id} />
+                    </div>
+                    )
+                }
+
                 else{
                     return(
                         

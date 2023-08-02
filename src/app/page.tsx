@@ -6,12 +6,13 @@ import { getServerSession } from "next-auth"
 import GetStarted from "@/app/components/GetStarted"
 import CheckoutBtn from "@/app/components/CheckoutBtn"
 import AuthorSignUp from "./components/AuthorSignUp"
-import { addReaderToWaitingList } from "./actions/db_actions"
+import { addReaderToWaitingList, getUser } from "./actions/db_actions"
 import { redirect } from "next/dist/server/api-utils"
 import { signIn } from "next-auth/react"
 
 export default async function Home() {
     const session = await getServerSession()
+    let user = await getUser(session?.user?.email)
 
     return (
     // <div className='flex space-x-10 md:mx-20 mt-20 flex-wrap'>
@@ -122,7 +123,14 @@ export default async function Home() {
                                 <span>Customer support</span>
                             </li>
                         </ul>
-                        <CheckoutBtn price_id="price_1NZwYQDZ67e7j3mHMn3WIkFx" />
+                        {
+                            session && user?.plan === 'starter' ?
+                            <div className="flex justify-center">
+                            <a type="submit" className="text-white w-fit hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-green-600 to-green-300 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900" href="/books">Purchased!</a>
+                            </div>
+                            :<CheckoutBtn price_id="price_1NZwYQDZ67e7j3mHMn3WIkFx" />
+
+                        }
                     </div>
                     {/* <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
                         <h3 className="mb-4 text-2xl font-semibold">Premium</h3>

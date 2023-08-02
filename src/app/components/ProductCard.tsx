@@ -39,8 +39,8 @@ export default function ProductCard({id, title, cover, price, price_id, hasSubsc
                         setURL(res.url)
 
                     }} type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Purchase</a>
-                    :<a href="/#pricing" type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] rounded-lg px-5 py-2.5 text-center dark:text-white">Purchase</a>
-                :<a href='/api/auth/signin' type="submit" className="text-white bg-gradient-to-tr from-indigo-500 to-[#BA68C8] rounded-lg px-5 py-2.5 text-center dark:text-white">Sign Up First</a>
+                    :<a href="/#pricing" type="submit" className="text-white text-sm bg-gradient-to-tr from-indigo-500 to-[#BA68C8] rounded-lg px-5 py-2.5 text-center dark:text-white">Purchase</a>
+                :<a href='/api/auth/signin' type="submit" className="text-white text-sm bg-gradient-to-tr from-indigo-500 to-[#BA68C8] rounded-lg px-5 py-2.5 text-center dark:text-white">Sign Up First</a>
             }
             </div>
         </div>
