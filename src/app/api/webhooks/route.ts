@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
                 console.log("email: ", _email)
                 console.log("payment mode: ", payment_mode)
 
-                if(amount == 1944 && payment_mode == "subscription"){
+                if(amount == 1175 && payment_mode == "subscription"){
                     // adding customer id to mongodb
                     await db.collection("users")
                     .updateOne({email: _email},
