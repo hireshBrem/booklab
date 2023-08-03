@@ -13,7 +13,7 @@ export default async function Books() {
 
     return(
         <>
-        <div className="text-white font-martian_mono text-lg max-w-4xl m-auto flex flex-wrap justify-center mb-24 sapce-y-2">
+        <div className="text-white font-martian_mono text-lg max-w-6xl m-auto flex flex-wrap justify-center mb-24 sapce-y-2">
         {
             books.map((book:any, index:number) => {
                 console.log(`Book ${book.title} : ` + user?.owned_books?.includes(book._id))
@@ -24,7 +24,7 @@ export default async function Books() {
                         {/* <Image className="rounded-lg" width={100} height={200} src={book.cover} alt="product image" /> */}
                         <div className="px-5 pb-5 spaxe-x-4 space-y-2">
                             <a href="#">
-                                <h5 className="text-lg tracking-tight text-gray-900 dark:text-white">{book.title} by {book.author}</h5>
+                                <h5 className="text-lg tracking-tight text-gray-900 dark:text-white mt-2">{book.title} by {book.author}</h5>
                             </a>
                             <div className="flex items-center justify-between space-x-5">
                                 <h1 className="text-xl">{book.price}</h1>
@@ -41,7 +41,7 @@ export default async function Books() {
                             {/* <Image className="rounded-lg" width={100} height={200} src={book.cover} alt="product image" /> */}
                             <div className="px-5 pb-5 spaxe-x-4 space-y-2">
                                 <a href="#">
-                                    <h5 className="text-lg tracking-tight text-gray-900 dark:text-white">{book.title} by {book.author}</h5>
+                                    <h5 className="text-lg tracking-tight text-gray-900 dark:text-white mt-2">{book.title} by {book.author}</h5>
                                 </a>
                                 <div className="flex items-center justify-between space-x-5">
                                     <h1 className="text-xl">{book.price}</h1>
@@ -58,7 +58,7 @@ export default async function Books() {
                             {/* <Image className="rounded-lg" width={100} height={200} src={book.cover} alt="product image" /> */}
                             <div className="px-5 pb-5 spaxe-x-4 space-y-2">
                                 <a href="#">
-                                    <h5 className="text-lg tracking-tight text-gray-900 dark:text-white">{book.title} by {book.author}</h5>
+                                    <h5 className="text-lg tracking-tight text-gray-900 dark:text-white mt-2">{book.title} by {book.author}</h5>
                                 </a>
                                 <div className="flex items-center justify-between space-x-5">
                                     <h1 className="text-3xl">{book.price}</h1>

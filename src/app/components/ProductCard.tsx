@@ -23,7 +23,7 @@ export default function ProductCard({id, author, title, cover, price, price_id, 
         </a>
         <div className="px-5 pb-5 spaxe-x-4 space-y-2">
             <a href="#">
-                <h5 className="text-lg tracking-tight text-gray-900 dark:text-white">{title} by {author}</h5>
+                <h5 className="text-lg tracking-tight text-gray-900 dark:text-white mt-2">{title} by {author}</h5>
             </a>
             <div className="flex items-center justify-between space-x-5">
                 <span className="text-3xl text-gray-900 dark:text-white">{price}</span>
