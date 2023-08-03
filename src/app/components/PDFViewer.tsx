@@ -51,7 +51,7 @@ export default function PDFViewer({book}: {book: any}) {
                         if(pageNumber!=1){
                             setPageNumber(pageNumber-1)
                         }
-                    }} className='p-2 mx-2 rounded-md bg-gradient-to-tr from-indigo-500 to-[#b18fb7]'>Previous Page</button>
+                    }} className='p-2 mx-2 rounded-md bg-gradient-to-tr from-indigo-500 to-[#BA68C8]'>Previous Page</button>
                     <button onClick={()=>{
                         if(pageNumber!=numPages){
                             setPageNumber(pageNumber+1)
@@ -76,12 +76,12 @@ export default function PDFViewer({book}: {book: any}) {
                                     <>
                                     {
                                     _comment ?
-                                <div key={_index} className='bg-gray-500 p-2 m-2 rounded-md'>
-                                    <div className='flex justify-between space-x-6'>
-                                        <h1 className='inline-block'>{_comment.sender_name}</h1>
+                                <div key={_index} className='bg-gray-800 p-2 m-2 rounded-md'>
+                                    <div className='flex justify-between space-x-6 text-sm'>
+                                        <h1 className='inline-block text-indigo-500'> {`>`}{_comment.sender_name}</h1>
                                         <h1 className='inline-block'>{date}</h1>                            
                                     </div>
-                                    <h1 className='text-sm'>{_comment.comment_text}</h1>
+                                    <h1 className='text-base mt-1'>{_comment.comment_text}</h1>
                                 </div>:null
                                     }
                                     </>
@@ -103,7 +103,7 @@ export default function PDFViewer({book}: {book: any}) {
             <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                 <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                     <label htmlFor="comment" className="sr-only">Your comment</label>
-                    <textarea value={comment} onChange={(e)=>setComment(e.target.value)} id="comment" rows={4} className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment..." required></textarea>
+                    <textarea value={comment} onChange={(e)=>setComment(e.target.value)} id="comment" rows={4} className="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400" placeholder="Join the conversation..." required></textarea>
                 </div>
                 <div className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
                     <button onClick={()=>{addComment(comment, pageNumber, session.data?.user?.name, book.title)}} type="submit" className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">

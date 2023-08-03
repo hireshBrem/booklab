@@ -2,8 +2,8 @@
 export default function Page() {
     console.log("privacy policy page!")
     return(
-        <div className="max-w-6xl mx-auto mb-32">
-            <h1 className="text-2xl mt-10 md:text-4xl bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono">Privacy Policy</h1>
+        <div className="max-w-6xl mx-auto mb-32 px-4">
+            <h1 className="text-4xl mt-10 bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono">Privacy Policy</h1>
             <h1 className="text-white font-martian_mono mt-10 text-base">
             Effective Date: 01/08/2023
             <br /> <br />

@@ -1,8 +1,8 @@
 
 export default function Page() {
     return(
-        <div className="max-w-6xl mx-auto mb-32">
-            <h1 className="text-2xl mt-10 md:text-4xl bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono">Community Guidelines</h1>
+        <div className="max-w-6xl mx-auto mb-32 px-4">
+            <h1 className="mt-10 text-4xl bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono">Community Guidelines</h1>
             <h1 className="text-white font-martian_mono mt-10 text-base">
             Welcome to our vibrant community! We are committed to fostering an inclusive and respectful environment where all members can engage, share ideas, and connect with one another. To ensure a positive experience for everyone, we have established these Community Guidelines that outline the expected behavior and standards of conduct within our community. By participating in our community, you agree to abide by these guidelines.
             <br /> <br />

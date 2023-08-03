@@ -316,10 +316,15 @@ export async function addBookToUser(book_id:string, _email:string | null | undef
     if(client) {
         const db = client.db("bookdb")
 
-        await db.collection("users")
-        .updateOne({email: _email},{
-            $push: {owned_books: book_id}
-        })
+        const user = await db.collection("users")
+        .findOne({email: _email})
+
+        if(user?.owned_books.includes(book_id)==false) {
+            await db.collection("users")
+            .updateOne({email: _email},{
+                $push: {owned_books: book_id}
+            })
+        }
 
         client.close()
     }

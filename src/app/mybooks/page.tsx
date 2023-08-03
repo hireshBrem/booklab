@@ -23,17 +23,17 @@ export default async function Page() {
                                     pathname: `/books/${bookId}`
                                 }}>
                                     <div className="w-fit m-2 p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                    <a href="#" className="flex justify-center my-2">
+                                    {/* <a href="#" className="flex justify-center my-2">
                                         {
-                                            book ? 
-                                            <Image className="rounded-t-lg" width={100} height={200} src={book.cover} alt="product image" />
-                                            :null
+                                            // book ? 
+                                            // // <Image className="rounded-t-lg" width={100} height={200} src={book.cover} alt="product image" />
+                                            // :null
                                         }
-                                    </a>
-                                    <div className="px-5 pb-5 spaxe-x-4 space-y-2">
-                                        {/* <a href="#">
-                                            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
-                                        </a> */}
+                                    </a> */}
+                                    <div className="px-5 spaxe-x-4 space-y-2">
+                                        <a href="#">
+                                            <h5 className="tracking-tight text-gray-900 dark:text-white">{book.title} by {book.author}</h5>
+                                        </a>
                                         
                                     </div>
                                     </div>

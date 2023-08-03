@@ -9,6 +9,7 @@ import AuthorSignUp from "./components/AuthorSignUp"
 import { addReaderToWaitingList, getUser } from "./actions/db_actions"
 import { redirect } from "next/dist/server/api-utils"
 import { signIn } from "next-auth/react"
+import commentPic from '@/app/pics/comment_pic.png'
 
 export default async function Home() {
     const session = await getServerSession()
@@ -37,12 +38,39 @@ export default async function Home() {
             <div className="self-center text-center mx-2">
                 <p className="text-4xl md:text-6xl bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono">Welcome to BookLab</p>
                 <p className="text-xl md:text-xl font-bold italic bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono mt-5">The first collaborative book reading platform</p>
-                <p className="text-lg bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono mt-5">We provide a platform for readers to connect with others to read collaboratively. Therefore reading with others can conquer the single most important reason why people dont read books - they find it boring!</p>
+                <p className="text-lg bg-gradient-to-tr from-indigo-500 to-[#BA68C8] bg-clip-text text-transparent font-martian_mono mt-5">We provide a platform for readers to connect with others and to read collaboratively. Therefore reading with others can conquer the single most important reason why people dont read books - they find it boring!</p>
             </div>
             <div className=''>
                 <Image className='sm:inline p-2' src={readingPic} width={400} height={400} alt="books" /> 
             </div>
         </div>
+        {/* <section className="bg-white dark:bg-gray-900 font-martian_monos">
+            <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+                <img className="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image" />
+                <img className="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image" />
+                <div className="mt-4 md:mt-0">
+                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and ideas that brings us together.</h2>
+                    <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
+                    <a href="#" className="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
+                        Get started
+                        <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </section> */}
+        <section className="bg-white dark:bg-gray-900 font-martian_mono my-24">
+            <div className="mx-auto max-w-screen-xl">
+                <div className="max-w-screen-md mx-auto text-center">
+                    <h2 className="max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-4xl xl:text-5xl dark:text-white">Our vision</h2>
+                    <p className="mb-8 mx-2 font-light text-gray-500 sm:text-xl dark:text-gray-400">We found out that people who read are more than 25% more likely to be healthy than non-readers. Our vision is to make reading more fun and entertaining for people, BookLab solves this by providing a platform where people read together, rather than alone.</p>
+                    <div className="flex flex-col justify-center items-center space-y-4 ">
+                        <a href="/#pricing" className="flex w-fit items-center hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-indigo-500 to-[#BA68C8] justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                            Get started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section className="bg-white dark:bg-gray-900 font-martian_mono mb-14">
             <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                 <div className="mr-auto place-self-center lg:col-span-7">
@@ -68,7 +96,7 @@ export default async function Home() {
                 </div> 
                 <div className="mr-auto place-self-center lg:col-span-7">
                     <h1 className="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Feedback tool for authors</h1>
-                    <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Answer reader's questions, join the conversation, get feedback and publish the best version of your book!</p>
+                    <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Answer reader's questions, join the conversation and get feedback!</p>
                     <a href="/authors" className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                         Are you a writer?
                         <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
@@ -83,7 +111,7 @@ export default async function Home() {
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                 <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pricing</h2>
-                    <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Here at BookLab, we provide readers with a platform where they can read collaboratively.</p>
+                    <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Here at BookLab, we provide readers with an immersive reading experience that they have never experienced before.</p>
                 </div>
                 {/* lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 */}
                 <div className="space-y-8 flex justify-center">
@@ -92,7 +120,7 @@ export default async function Home() {
                         <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
                         <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option to just get started.</p>
                         <div className="flex justify-center items-baseline my-8">
-                            <span className="mr-2 text-5xl font-extrabold">$25</span>
+                            <span className="mr-2 text-5xl font-extrabold">$15</span>
                             <span className="text-gray-500">/month</span>
                         </div>
                         {/* <!-- List --> */}
@@ -102,11 +130,10 @@ export default async function Home() {
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                 <span>Access to all collaborative tools</span>
                             </li>
-                            <li className="flex items-center space-x-3">
-                                {/* <!-- Icon --> */}
+                            {/* <li className="flex items-center space-x-3">
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                 <span>Customer support</span>
-                            </li>
+                            </li> */}
                             <li className="flex items-center space-x-3">
                                 {/* <!-- Icon --> */}
                                 <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
@@ -128,7 +155,7 @@ export default async function Home() {
                             <div className="flex justify-center">
                             <a type="submit" className="text-white w-fit hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-green-600 to-green-300 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900" href="/books">Purchased!</a>
                             </div>
-                            :<CheckoutBtn price_id="price_1NZwYQDZ67e7j3mHMn3WIkFx" />
+                            :<CheckoutBtn price_id="price_1Namk4DZ67e7j3mHCWvDbkPk" />
 
                         }
                     </div>

@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation"
 
-export default function ProductCard({id, title, cover, price, price_id, hasSubscription}: {id:string, title:string, cover:string, price:string, price_id:string, hasSubscription:boolean}) {
+export default function ProductCard({id, author, title, cover, price, price_id, hasSubscription}: {id:string, author:string, title:string, cover:string, price:string, price_id:string, hasSubscription:boolean}) {
     const { data: session } = useSession()
     const[url,setURL] = useState('')
 
@@ -23,7 +23,7 @@ export default function ProductCard({id, title, cover, price, price_id, hasSubsc
         </a>
         <div className="px-5 pb-5 spaxe-x-4 space-y-2">
             <a href="#">
-                <h5 className="text-xl tracking-tight text-gray-900 dark:text-white">{title}</h5>
+                <h5 className="text-lg tracking-tight text-gray-900 dark:text-white">{title} by {author}</h5>
             </a>
             <div className="flex items-center justify-between space-x-5">
                 <span className="text-3xl text-gray-900 dark:text-white">{price}</span>
