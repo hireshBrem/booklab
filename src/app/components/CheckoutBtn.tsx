@@ -35,7 +35,7 @@ export default function CheckoutBtn({priceId}:{priceId:string}) {
     
     return(
         <>
-        <form method="POST" action="/api/create-checkout-session">
+        <form method="POST">
             <input type="hidden" name="priceId" value={priceId} />
             {
                 session ?
@@ -43,7 +43,7 @@ export default function CheckoutBtn({priceId}:{priceId:string}) {
                     const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/create-checkout-session`, {
                         method: 'POST',
                         body: JSON.stringify({email:session.user?.email, price_id: priceId})
-                    }).then(r=>r.json())
+                    }).then(res => res.json())
                     console.log(res.url)
                     setURL(res.url)
 
