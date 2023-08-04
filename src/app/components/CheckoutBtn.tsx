@@ -8,7 +8,7 @@ import getStripe from "@/app/components/getStripe";
 
 const stripePromise = getStripe();
 
-export default function CheckoutBtn({price_id}:{price_id:string}) {
+export default function CheckoutBtn({priceId}:{priceId:string}) {
     const { data: session } = useSession()
     const[url,setURL] = useState('')
 
@@ -36,13 +36,13 @@ export default function CheckoutBtn({price_id}:{price_id:string}) {
     return(
         <>
         <form method="POST" action="/api/create-checkout-session">
-            <input type="hidden" name="priceId" value={price_id} />
+            <input type="hidden" name="priceId" value={priceId} />
             {
                 session ?
                 <button onClick={async()=>{
                     const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/create-checkout-session`, {
                         method: 'POST',
-                        body: JSON.stringify({email:session.user?.email, price_id: price_id})
+                        body: JSON.stringify({email:session.user?.email, price_id: priceId})
                     }).then(r=>r.json())
                     console.log(res.url)
                     setURL(res.url)
