@@ -18,9 +18,9 @@ export default function Footer() {
                 <li>
                     <a href="/contact" className="mr-4 hover:underline md:mr-6 ">Publish Writing</a>
                 </li>
-                <li>
+                {/* <li>
                     <a href="/terms&conditions" className="mr-4 hover:underline md:mr-6 ">Terms and conditions</a>
-                </li>
+                </li> */}
                 <li>
                     <a href="/privacy" className="mr-4 hover:underline md:mr-6 ">Privacy Policy</a>
                 </li>
