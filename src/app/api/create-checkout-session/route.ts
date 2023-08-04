@@ -12,12 +12,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     typescript: true
 });
 
-export const runtime = "edge";
-
-const cors = Cors({
-  methods: ["POST", "GET", "OPTIONS"],
-});
-
 export async function POST(request: NextRequest) {
     
     try{
