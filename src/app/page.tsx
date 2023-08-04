@@ -155,7 +155,7 @@ export default async function Home() {
                             <div className="flex justify-center">
                             <a type="submit" className="text-white w-fit hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-green-600 to-green-300 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900" href="/books">Purchased!</a>
                             </div>
-                            :<CheckoutBtn priceId="price_1Namk4DZ67e7j3mHCWvDbkPk" />
+                            :<CheckoutBtn priceId="price_1NbOgkDZ67e7j3mHoA2R5LFG" />
 
                         }
                     </div>
