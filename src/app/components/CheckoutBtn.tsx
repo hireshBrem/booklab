@@ -44,7 +44,6 @@ export default function CheckoutBtn({priceId}:{priceId:string}) {
                         method: 'POST',
                         body: JSON.stringify({email:session.user?.email, price_id: priceId})
                     }).then(res => res.json())
-                    console.log(res.url)
                     setURL(res.url)
 
                 }} type="submit" className="text-white hover:translate-x-1 hover:-translate-y-1 ease-in-out duration-150 bg-gradient-to-tr from-indigo-500 to-[#BA68C8] focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Purchase</button>

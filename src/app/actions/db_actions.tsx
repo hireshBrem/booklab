@@ -36,7 +36,6 @@ export async function addReaderToWaitingList(_email:string) {
         .insertOne({
             email: _email,
         });
-        console.log("Added to waiting list")
         await client.close();
     }    
 }
@@ -53,7 +52,6 @@ export async function addAuthorToWaitingList(_email:string) {
         .insertOne({
             email: _email,
         });
-        console.log("Added to waiting list")
         await client.close();
     }     
 }
@@ -187,8 +185,6 @@ export async function checkAllowedBook(email: string | null | undefined, bookId:
         await client.close();
         if(user?.owned_books.length>0) {
             user?.owned_books.forEach((book:string) => {
-                console.log(bookId)
-                console.log(book)
                 if(bookId==book){
                     isAllowed = true
                 }

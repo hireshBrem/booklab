@@ -17,9 +17,6 @@ export async function POST(request: NextRequest) {
     try{
         const { email, price_id } = await request.json()
 
-        console.log("priceId: " + price_id)
-        console.log("email: " + email)
-
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             customer_email: email,
@@ -32,7 +29,6 @@ export async function POST(request: NextRequest) {
             success_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/cancel`
         })
-        console.log(session)
 
         if(session.url) {
             return NextResponse.json({ url: session.url });
