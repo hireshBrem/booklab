@@ -24,10 +24,9 @@ export default async function Page({params, searchParams}: {
     
     let book = {title, data, comments}
     if(session) {
-        if(isAllowedToViewBook==false) {
-            redirect("/books")
-        }
-        else{
+        // if(isAllowedToViewBook==false) {
+        //     redirect("/books")
+        // }
         return (
             <>
             {
@@ -41,7 +40,6 @@ export default async function Page({params, searchParams}: {
         }
         </>
         )
-        }
     }
     else{
         redirect('/api/auth/signin')
